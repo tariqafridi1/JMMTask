@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\source\\repos\\JMMtask\\JMMtask\\JMMtask.csproj": {}
+    "D:\\JMM Test\\JMMTask\\JMMtask\\JMMtask.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\source\\repos\\JMMtask\\JMMtask\\JMMtask.csproj": {
+    "D:\\JMM Test\\JMMTask\\JMMtask\\JMMtask.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\source\\repos\\JMMtask\\JMMtask\\JMMtask.csproj",
+        "projectUniqueName": "D:\\JMM Test\\JMMTask\\JMMtask\\JMMtask.csproj",
         "projectName": "JMMtask",
-        "projectPath": "C:\\Users\\Dell\\source\\repos\\JMMtask\\JMMtask\\JMMtask.csproj",
+        "projectPath": "D:\\JMM Test\\JMMTask\\JMMtask\\JMMtask.csproj",
         "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\source\\repos\\JMMtask\\JMMtask\\obj\\",
+        "outputPath": "D:\\JMM Test\\JMMTask\\JMMtask\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",

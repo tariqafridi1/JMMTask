@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SeuLLzr3FHGBWWjmlDEOpa5btkEtvPYzpFnqj9uYgF+06DNHo6cNd9jaTLIUXnyoawtPv0mSnnhidaQrD6HEHQ==",
+  "dgSpecHash": "OJUybJIbC0rA6vFJuFDH14lKpmyCuvnuYpTlqBM0UOpfqz+O7/iXIjJHfzSnzhba+N3mCJWcnrY2Rq1jeRW1Yg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dell\\source\\repos\\JMMtask\\JMMtask\\JMMtask.csproj",
+  "projectFilePath": "D:\\JMM Test\\JMMTask\\JMMtask\\JMMtask.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

@@ -15,7 +15,7 @@ namespace JMMtask.Services
         public void AddTodo(Models.Todo todo)
         {
             dbContext.Todos.Add(todo);
-            //dbContext.SaveChanges();
+            dbContext.SaveChanges();
         }
 
         public string Delete(int ID)
@@ -24,7 +24,7 @@ namespace JMMtask.Services
             if (todo != null)
             {
                 dbContext.Todos.Remove(todo);
-               // dbContext.SaveChanges();
+                dbContext.SaveChanges();
             }
             return "Deleted";
         }

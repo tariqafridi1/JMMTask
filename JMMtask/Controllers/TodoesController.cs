@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using JMMtask.DatabaseContext;
 using JMMtask.Models;
 using Microsoft.AspNetCore.Authorization;
+using JMMtask.IServices;
 
 namespace JMMtask.Controllers
 {
@@ -16,35 +17,35 @@ namespace JMMtask.Controllers
     public class TodoesController : Controller
     {
 
-        private readonly TodoDBContext _context;
+        private readonly ITodo _context;
 
-        public TodoesController(TodoDBContext context)
+        public TodoesController(ITodo context)
         {
             _context = context;
         }
 
         // GET: Todoes
-        public  IActionResult Index()
+        public IActionResult Index()
         {
-            var result=  _context.Todos.ToList();
+            var result = _context.GetTodos();
             var model = new List<Todo>();
             foreach (var item in result)
             {
                 model.Add(new Todo()
                 {
                     ID = item.ID,
-                    Description = item.Description, 
-                     DueDate = item.DueDate,
-                     Priority = item.Priority,  
-                     Status = item.Status,  
-                     Title= item.Title,
+                    Description = item.Description,
+                    DueDate = item.DueDate,
+                    Priority = item.Priority,
+                    Status = item.Status,
+                    Title = item.Title,
                 });
             }
             return View(model);
-                        
+
         }
 
-       
+
         public IActionResult Create()
         {
             return View();
@@ -52,26 +53,25 @@ namespace JMMtask.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  IActionResult Create(Todo todo)
+        public IActionResult Create(Todo todo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(todo);
-                 _context.SaveChanges();
+                _context.AddTodo(todo);
                 return RedirectToAction(nameof(Index));
             }
             return View(todo);
         }
 
         // GET: Todoes/Edit/5
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(int id)
         {
-            if (id == null || _context.Todos == null)
+            if (id == null || _context.GetTodos() == null)
             {
                 return NotFound();
             }
 
-            var todo =  _context.Todos.Find(id);
+            var todo = _context.GetTodoById(id);
             if (todo == null)
             {
                 return NotFound();
@@ -79,19 +79,18 @@ namespace JMMtask.Controllers
             return View(todo);
         }
 
-      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  IActionResult Edit( Todo todo)
+        public IActionResult Edit(Todo todo)
         {
-           
+
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(todo);
-                     _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -110,15 +109,14 @@ namespace JMMtask.Controllers
         }
 
         // GET: Todoes/Delete/5
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
-            if (id == null || _context.Todos == null)
+            if (id == null || _context.GetTodos() == null)
             {
                 return NotFound();
             }
 
-            var todo =  _context.Todos
-                .FirstOrDefault(m => m.ID == id);
+            var todo = _context.GetTodoById(id);
             if (todo == null)
             {
                 return NotFound();
@@ -127,28 +125,24 @@ namespace JMMtask.Controllers
             return View(todo);
         }
 
-     
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public  IActionResult DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            if (_context.Todos == null)
-            {
-                return Problem("Entity set 'TodoDBContext.Todos'  is null.");
-            }
-            var todo =  _context.Todos.Find(id);
+
+            var todo = _context.GetTodoById(id);
             if (todo != null)
             {
-                _context.Todos.Remove(todo);
+                _context.Delete(id);
             }
-            
-             _context.SaveChanges();
+
             return RedirectToAction(nameof(Index));
         }
 
         private bool TodoExists(int id)
         {
-          return (_context.Todos?.Any(e => e.ID == id)).GetValueOrDefault();
+            return (_context.GetTodos()?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }
